@@ -1,0 +1,105 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+[](kanagawa_purple)\
+$os\
+$username\
+[](bg:kanagawa_red fg:kanagawa_purple)\
+$directory\
+[](fg:kanagawa_red bg:kanagawa_orange)\
+$git_branch\
+$git_status\
+[](fg:kanagawa_orange bg:kanagawa_blue)\
+$c\
+$elixir\
+$elm\
+$golang\
+$gradle\
+$haskell\
+$java\
+$julia\
+$maven\
+$nodejs\
+$bun\
+$nim\
+$rust\
+$scala\
+[](fg:kanagawa_blue bg:kanagawa_aqua)\
+$docker_context\
+[](fg:kanagawa_aqua bg:kanagawa_bg1)\
+$time\
+[ ](fg:kanagawa_bg1)\
+$line_break$character"""
+
+palette = 'kanagawa_pastel'
+
+[palettes.kanagawa_pastel]
+kanagawa_bg1 = '#2a2a37'     # Sumi Ink 2 (Dark end)
+kanagawa_fg0 = '#dcd7ba'     # Fuji White (Text)
+kanagawa_purple = '#957fb8'  # Oni Violet (Start)
+kanagawa_red = '#c34043'     # Autumn Red
+kanagawa_orange = '#ffa066'  # Surimi Orange
+kanagawa_blue = '#7e9cd8'    # Crystal Blue
+kanagawa_aqua = '#7aa89f'    # Sui Green
+kanagawa_yellow = '#d79921'  # Carp Yellow
+
+[os]
+disabled = false
+style = "bg:kanagawa_purple fg:kanagawa_bg1"
+
+[os.symbols]
+Fedora = "󰣛 "
+Ubuntu = "󰕈 "
+Linux = "󰌽 "
+
+[username]
+show_always = true
+style_user = "bg:kanagawa_purple fg:kanagawa_bg1"
+style_root = "bg:kanagawa_purple fg:kanagawa_bg1"
+format = '[$user ]($style)'
+
+[directory]
+style = "bg:kanagawa_red fg:kanagawa_bg1"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[git_branch]
+symbol = ""
+style = "bg:kanagawa_orange fg:kanagawa_bg1"
+format = '[ $symbol $branch ]($style)'
+
+[git_status]
+style = "bg:kanagawa_orange fg:kanagawa_bg1"
+format = '[$all_status$ahead_behind ]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:kanagawa_blue fg:kanagawa_bg1"
+format = '[ $symbol ($version) ]($style)'
+
+[rust]
+symbol = ""
+style = "bg:kanagawa_blue fg:kanagawa_bg1"
+format = '[ $symbol ($version) ]($style)'
+
+[golang]
+symbol = " "
+style = "bg:kanagawa_blue fg:kanagawa_bg1"
+format = '[ $symbol ($version) ]($style)'
+
+[docker_context]
+symbol = " "
+style = "bg:kanagawa_aqua fg:kanagawa_bg1"
+format = '[ $symbol $context ]($style)'
+
+[time]
+disabled = false
+time_format = "%R"
+style = "bg:kanagawa_bg1 fg:kanagawa_fg0"
+format = '[ ♥ $time ]($style)'
+
+[character]
+disabled = false
+success_symbol = '[](bold kanagawa_aqua)'
+error_symbol = '[](bold kanagawa_red)'

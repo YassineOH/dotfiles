@@ -1,0 +1,9 @@
+[user]
+    name = Yassine OH
+    email = yassine.yas98@gmail.com
+
+[init]
+    defaultBranch = main
+
+[pull]
+    rebase = false
