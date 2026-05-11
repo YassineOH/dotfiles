@@ -1,12 +1,20 @@
 # -----------------------------------------------------------------------------
 # PATH (must be first so all tools below can be found)
 # -----------------------------------------------------------------------------
+
+# Homebrew (macOS)
+if [ -f /opt/homebrew/bin/brew ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
 export PATH="$HOME/.local/bin:$PATH"
 
 # fnm
 FNM_PATH="$HOME/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
   export PATH="$FNM_PATH:$PATH"
+  eval "$(fnm env --use-on-cd --shell zsh)"
+elif command -v fnm &> /dev/null; then
   eval "$(fnm env --use-on-cd --shell zsh)"
 fi
 
@@ -69,6 +77,11 @@ alias ls='eza --icons'
 alias ll='eza -lah --icons'
 alias la='eza -a --icons'
 alias tree='eza --tree --icons'
-alias bat='batcat'
-alias cat='batcat'
 alias lg='lazygit'
+
+if command -v batcat &> /dev/null; then
+  alias bat='batcat'
+  alias cat='batcat'
+elif command -v bat &> /dev/null; then
+  alias cat='bat'
+fi
