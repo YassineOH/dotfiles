@@ -9,6 +9,9 @@ fi
 
 export PATH="$HOME/.local/bin:$PATH"
 
+# VS Code CLI
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
 # fnm
 FNM_PATH="$HOME/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
