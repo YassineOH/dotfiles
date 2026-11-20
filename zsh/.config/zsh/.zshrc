@@ -88,3 +88,16 @@ if command -v batcat &> /dev/null; then
 elif command -v bat &> /dev/null; then
   alias cat='bat'
 fi
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/yassine/.docker/completions $fpath)
+autoload -Uz compinit
+(( ${+_comps[docker]} )) || compinit
+# End of Docker CLI completions
+
+# pnpm
+export PNPM_HOME='/Users/yassine/Library/pnpm'
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end
