@@ -88,14 +88,20 @@ if command -v batcat &> /dev/null; then
 elif command -v bat &> /dev/null; then
   alias cat='bat'
 fi
-# The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=(/Users/yassine/.docker/completions $fpath)
-autoload -Uz compinit
-(( ${+_comps[docker]} )) || compinit
-# End of Docker CLI completions
+
+# Docker CLI completions
+if [ -d "$HOME/.docker/completions" ]; then
+  fpath=("$HOME/.docker/completions" $fpath)
+  autoload -Uz compinit
+  (( ${+_comps[docker]} )) || compinit
+fi
 
 # pnpm
-export PNPM_HOME='/Users/yassine/Library/pnpm'
+if [[ "$OSTYPE" == darwin* ]]; then
+  export PNPM_HOME="$HOME/Library/pnpm"
+else
+  export PNPM_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/pnpm"
+fi
 case ":$PATH:" in
   *":$PNPM_HOME/bin:"*) ;;
   *) export PATH="$PNPM_HOME/bin:$PATH" ;;
